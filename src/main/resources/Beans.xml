@@ -1,11 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+       http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-init-method="start" default-destroy-method="destroy">
 
-    <bean id="helloWorld" class="com.tutorialspoint.HelloWorld">
+    <bean id="helloWorld" class="com.tutorialspoint.HelloWorld" lazy-init="true">
         <property name="message" value="Hello Lijunjie"/>
     </bean>
+
+    <bean id="helloWorldSingletone" class="com.tutorialspoint.HelloWorld"
+          scope="singleton" init-method="init" destroy-method="des">
+        <property name="message" value="Hello Singletone"/>
+    </bean>
+
+    <bean id="helloWorldPrototype" class="com.tutorialspoint.HelloWorld" scope="prototype">
+        <property name="message" value="Hello Prototype"/>
+    </bean>
+
+    <bean id="tempClass" class="com.tutorialspoint.TempClass" scope="prototype">
+        <property name="message" value="Hello Temp"/>
+    </bean>
+
+    <bean class="com.tutorialspoint.InitHelloWorld"/>
 
 </beans>
